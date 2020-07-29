@@ -38,6 +38,7 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
     const COLOR_DARKGREEN  = 'FF008000';
     const COLOR_YELLOW     = 'FFFFFF00';
     const COLOR_DARKYELLOW = 'FF808000';
+    const COLOR_GREY       = 'FF808080';
 
     /**
      * Indexed colors array
