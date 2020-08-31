@@ -733,10 +733,14 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
                     if (!isset($isMergeCell[$this->cellCollection->getCurrentAddress()])) {
                         // Calculated value
                         // To formatted string
-                        $cellValue = PHPExcel_Style_NumberFormat::toFormattedString(
-                            $cell->getCalculatedValue(),
-                            $this->getParent()->getCellXfByIndex($cell->getXfIndex())->getNumberFormat()->getFormatCode()
-                        );
+                        try {
+                            $cellValue = PHPExcel_Style_NumberFormat::toFormattedString(
+                                $cell->getCalculatedValue(),
+                                $this->getParent()->getCellXfByIndex($cell->getXfIndex())->getNumberFormat()->getFormatCode()
+                            );
+                        } catch (PHPExcel_Calculation_Exception $e) {
+                            $cellValue = $cell->calculatedValue;
+                        }
 
                         $autoSizes[$this->cellCollection->getCurrentColumn()] = max(
                             (float) $autoSizes[$this->cellCollection->getCurrentColumn()],

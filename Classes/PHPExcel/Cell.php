@@ -58,7 +58,7 @@ class PHPExcel_Cell
      *
      *    @var mixed
      */
-    private $calculatedValue;
+    public $calculatedValue;
 
     /**
      *    Type of the cell data
